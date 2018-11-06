@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 头部导航条 -->
+  <view class="header">
+    <navigator class='search' url='../a/a' hover-class='navigator-hover'>
+      <icon class='search_icon' type='search' size='16' color='#999' />
+      <text style='font-size:15px'>搜一搜</text>
+    </navigator>
+
+  </view>
+  <!-- 可滚动的视图页面 -->
+  <scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}" bindsroll="onToTop" scroll-y="true" style='height:calc(100%-1px)'>
+    <!-- 轮播图 -->
+    <swiper indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class="swiper-height">
+      <block wx:for="{{banners}}">
+        <swiper-item>
+          <image src='{{item.imgUrl}}' class='slide-image' style='height:{{windowWidth * 0.375}}px' data-goodsid='{{item.goodsId}}' catchtap='show' />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- 分类 -->
+    <view class='category'>
+      <view wx:for="{{category}}" wx:key="item" class="category_item">
+        <navigator url="{{item.url}}" hover-class='navigator-hover'>
+          <view class="flex column category_item_btn">
+            <image src='{{item.imgUrl}}' class="category_logo" />
+            <text>{{item.name}}</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="product">
+      <view class="product_title">手机</view>
+      <view class="product_list">
+        <view style="margin-right:5px;overflow:hidden;">
+          <view class="product_item" wx:for="{{ product }}" wx:key="item">
+            <view class="product_item_container">
+              <navigator class="product_link" url="../detail/detail?goodsId={{item.id}}" hover-class="navigator-hover">
+                <image class="product_img" src="{{ item.imgUrl }}"></image>
+                <view class="product_info">
+                  <view class="product_name">
+                    <text>{{ item.description }}</text>
+                  </view>
+                  <view class="costAndAdd">
+                    <text class="product_cost">￥{{ item.price }}</text>
+                    <text class="product_privil">￥{{ item.privilegePrice }}</text>
+                  </view>
+                </view>
+              </navigator>
+              <!-- <view class="addCart" bindtap="addCost"></view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 第二种引入wxml -->
+    <view class="goodscontent">
+      <view class="paper" bindtap='onpaper'>
+        <text>手机</text>
+      </view>
+    </view>
+    <view class="goods-panel">
+      <import src="tpl/goodsList.wxml" />
+      <template is="goodsList" data="{{goodsList:goodsList}}" />
+    </view>
+
+  </scroll-view>
+</view>

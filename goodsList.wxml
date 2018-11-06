@@ -1,0 +1,21 @@
+<!-- goodsList.wxml -->
+<template name="goodsItem">
+    <view class="goods-item{{index % 2 == 0?' odd':''}}">
+            <view class="goods">
+                <view class="goods-tag ten" />
+                <image class="goods-image" src="{{goods.imgUrl}}" />
+                <view class="desc-wrapper">
+                    <view class="goods-desc">{{goods.name}}</view>
+                </view>
+            </view>
+            <view class="operating">
+                
+            </view>
+        </view>
+</template>
+
+<template name="goodsList">
+    <block wx:for="{{goodsList}}">
+        <template is="goodsItem" data="{{index:index,goods:item}}"/>
+    </block>
+</template>
