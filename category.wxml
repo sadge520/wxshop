@@ -1,0 +1,49 @@
+<!--pages/category/category.wxml-->
+<view class="container">
+  <!-- 头部导航条 -->
+  <view class="header">
+    <block>
+      <navigator class='search' url='../a/a' hover-class='navigator-hover'>
+        <icon class='search_icon' type='search' size='16' color='#999' />
+        <text style='font-size:15px'>搜一搜</text>
+      </navigator>
+    </block>
+  </view>
+
+  <!-- 分类菜单 -->
+  <view class="menu_container">
+    <!-- 左边分类导航滚动条 -->
+    <scroll-view class="scroll_view_left" scroll-y="true" style="height:{{windowHeight}} px" scroll-with-animation="true" scroll-top="{{scrollTop}}">
+      <view class="menu_left">
+        <block wx:for="{{categoryData}}" wx:for-index="idx" wx:for-item="itemName" >
+          <!-- 当前项的id等于item项的id，那就是当前状态 -->
+          <!-- 用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开右侧侧滑栏使用 -->
+          <view class="menu_left_items {{currentIndex == idx?'active':''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}" id="{{idx}}">{{itemName[0].name}}</view>
+        </block>
+      </view>
+    </scroll-view>
+    <!-- 右侧内容详情 -->
+    <!-- 如果使用scroll-into-view 属性，必须设置scroll-view的高度，且最好是动态获取屏幕高度 -->
+    <!-- scroll-into-view 属性 值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 -->
+    <scroll-view class="scroll_view_right" scroll-y="true" style="height:{{windowHeight}} px" scroll-with-animation="true" scroll-into-view="{{scrollTopId}}" bindscroll="scroll">
+      <view class="menu_right">
+        <view class='mink' wx:for="{{categoryData}}" wx:for-index="idx" wx:for-item="itemName" bindscroll="scrollTop">
+          <view class='minl' id='{{idx}}'>{{itemName[0].name}}</view>
+          <block wx:for="{{itemName}}" wx:for-index="idex">
+            <view class="menu_right_items" wx:if="{{idex>0}}">
+              <navigator  url="../detail/detail?goodsId={{item.id}}"  data-id="{{item.id}}"  hover-class="other-navigator-hover">
+                <view>
+                  <image src="{{item.imgUrl}}"></image>
+                  <view>
+                    <text>{{item.name}}</text> </view>
+                </view>
+              </navigator>
+            </view>
+          </block>
+        </view>
+        <view style="width:100%;height:1rpx;background:#f0f4f7"></view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>

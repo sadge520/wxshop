@@ -1,0 +1,146 @@
+/* pages/category/category.wxss */
+/* 搜索导航栏 z-index：设置层叠样式，决定样式的位置是否在上层 */
+.container {
+    width: 100%;
+    padding:0;
+    margin: 0;
+    background-color: #fff;
+}
+
+.header{
+  width:100%;
+  height: 10px;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top:0;
+  z-index: 10;
+  padding-left: 340px;
+
+}
+.menu_container {
+  position: fixed;
+  width: 100%;
+  background-color: #f0f4f7;
+  color: #939393;
+
+}
+.scroll_view_left {
+  width: 25%;
+  height: 500px;
+  background: #fff;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 25px;
+
+}
+/* 左侧栏分类菜单 */
+.menu_left {
+  /*设置行内块级元素（没使用定位）*/
+  display: inline-block;
+  width: 100%;
+  height: 100%; 
+  /*盒子设置背景色为灰色*/
+  background: #fff;
+  text-align: center; 
+  /* position: fixed; */
+  left: 0;
+  top: 0;
+  border-top: 1rpx solid #dedede;
+}
+
+/*左侧栏list的item*/
+.menu_left .menu_left_items {
+  background: #fff; /*每个高30px*/
+  height: 80rpx; /*垂直居中*/
+  line-height: 80rpx; /*再设上下padding增加高度，总高42px*/
+  padding: 15rpx 0; /*只设下边线*/
+  border-bottom: 1px solid #dedede; /*文字14px*/
+  font-size: 29rpx;
+  color: #101010;
+  font-weight:normal ;
+}
+
+/*左侧栏list的item被选中时*/
+.menu_left .menu_left_items.active {
+  /*背景色变成白色*/
+  background: #f0f4f7;
+  color: #ed1000;
+}
+
+/*右侧栏主盒子*/
+
+.scroll_view_right {
+  /*右侧盒子使用了绝对定位*/
+  position: fixed;
+  top: 25px;
+  right: 0;
+  overflow: auto;
+  flex: 1; /*宽度75%，高度占满，并使用百分比布局*/
+  width: 75%;
+  height: 500px;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #f0f4f7;
+  border-top: 1rpx solid #dedede;
+}
+
+.mink::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+
+
+.minl {
+  font-size: 29rpx;
+  color: #777;
+  text-align: left;
+  line-height: 60rpx;
+  float: left;
+  background: #f0f4f7;
+  width: 100%; /* height: 50rpx; */
+}
+
+.mink {
+  width: 100%;
+  background: #fff;
+  height: 100%;
+}
+
+/*右侧栏list的item*/
+
+.menu_right_items {
+  /*浮动向左*/
+  float: left; /*每个item设置宽度是33.33%*/
+  width: 50%; /* height: 160rpx; */
+  text-align: center;
+  color: #4a4a4a;
+  background: #fff;
+}
+
+.menu_right_items image {
+  /*被图片设置宽高*/
+  width: 60px;
+  height: 50px;
+  margin-top: 15rpx;
+}
+
+.menu_right_items text {
+  /*给text设成块级元素*/
+  display: block;
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+   /*设置文字溢出部分为...*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/** 自定义其他点击态样式类 **/
+.other-navigator-hover {
+  background: #fff;
+}
