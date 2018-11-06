@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/a/a",
+    "pages/person/index",
+    "icon/index",
+    "pages/category/category",
+    "pages/scrolltab/scrolltab",
+    "pages/detail/detail",
+    "pages/cart/cart",
+    "pages/goods/goods",
+    "pages/order/list",
+    "pages/address/address"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6495ED",
+    "navigationBarTitleText": "商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "blue",
+    "position": "bottom",
+    "borderStyle": "black",
+    "selectedIconPath": "..",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "resources/wxmsg.png",
+        "selectedIconPath": "resources/wxmsg-act.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "resources/record.png",
+        "selectedIconPath": "resources/record-act.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "resources/record.png",
+        "selectedIconPath": "resources/record-act.png"
+      },
+      {
+        "pagePath": "pages/scrolltab/scrolltab",
+        "text": "发现",
+        "iconPath": "resources/find.png",
+        "selectedIconPath": "resources/find-act.png"
+      },
+      {
+        "pagePath": "pages/person/index",
+        "text": "我的",
+        "iconPath": "resources/user.png",
+        "selectedIconPath": "resources/user-act.png"
+      }
+    ]
+  },
+  "debug": true
+}
