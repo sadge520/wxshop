@@ -1,71 +1,76 @@
-<!--index.wxml-->
-<view class="container">
-  <!-- 头部导航条 -->
-  <view class="header">
-    <navigator class='search' url='../a/a' hover-class='navigator-hover'>
-      <icon class='search_icon' type='search' size='16' color='#999' />
-      <text style='font-size:15px'>搜一搜</text>
-    </navigator>
-
+<!--pages/person/index.wxml-->
+<view>
+<!-- 页面头部 显示用户信息 -->
+  <view class="fff module module1">
+    <view class="header flex">
+      <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+      <button bindtap="memberinfo" class="memberinfo">会员积分</button>
+      </view>
+    </view>
+    <view class="myorder" bindtap='allOrder' data-status="0">
+        <text class="myorder-text">我的订单</text>
+        <text class="allorder-tex">全部订单</text>
+    </view>
+    <view class="order-area">
+      <view bindtap='noPay' class="order icon-pay" data-status="1">
+        <image src='../../images/icon_order.png' />
+        <view class="weui-badge" hidden="{{false}}">{{badgeNum}}</view>
+        <text>待付款</text>
+      </view>
+      <view bindtap='sended' class="order icon-deliver" data-status="2">
+        <image src='../../images/icon_order.png' />
+        <view class="weui-badge" hidden="{{false}}">{{badgeNum}}</view>
+        <text>待收货</text>
+      </view>
+      <view bindtap='completed' class="order icon-post" data-status="3">
+        <image src='../../images/icon_order.png' />
+        <view class="weui-badge" hidden="{{false}}">{{badgeNum}}</view>
+        <text>待评价</text>
+      </view>
+      <view bindtap='navigateToOrder' class="order icon-goodsnew" >
+        <image src='../../images/icon_order.png' />
+        <text>退换修</text>
+      </view>
+    </view>
   </view>
-  <!-- 可滚动的视图页面 -->
-  <scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}" bindsroll="onToTop" scroll-y="true" style='height:calc(100%-1px)'>
-    <!-- 轮播图 -->
-    <swiper indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class="swiper-height">
-      <block wx:for="{{banners}}">
-        <swiper-item>
-          <image src='{{item.imgUrl}}' class='slide-image' style='height:{{windowWidth * 0.375}}px' data-goodsid='{{item.goodsId}}' catchtap='show' />
-        </swiper-item>
-      </block>
-    </swiper>
 
-    <!-- 分类 -->
-    <view class='category'>
-      <view wx:for="{{category}}" wx:key="item" class="category_item">
-        <navigator url="{{item.url}}" hover-class='navigator-hover'>
-          <view class="flex column category_item_btn">
-            <image src='{{item.imgUrl}}' class="category_logo" />
-            <text>{{item.name}}</text>
-          </view>
-        </navigator>
-      </view>
-    </view>
+  <view bindtap="navigateToAddress" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>优惠券</text>
+  </view>
+  <view bindtap="navigateToMember" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>会员中心</text>
+  </view>
+   <view bindtap="navigateToDonate" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>我的钱包</text>
+  </view>
+ 
+  <view bindtap="navigateToAboutus" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>服务中心</text>
+  </view>
+   <view bindtap="navigateToAboutus" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>小米之家</text>
+  </view>
+  <view bindtap="navigateToAboutus" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>直供点</text>
+  </view>
+   <view bindtap="navigateToAboutus" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>更多功能</text>
+  </view>
 
-    <view class="product">
-      <view class="product_title">手机</view>
-      <view class="product_list">
-        <view style="margin-right:5px;overflow:hidden;">
-          <view class="product_item" wx:for="{{ product }}" wx:key="item">
-            <view class="product_item_container">
-              <navigator class="product_link" url="../detail/detail?goodsId={{item.id}}" hover-class="navigator-hover">
-                <image class="product_img" src="{{ item.imgUrl }}"></image>
-                <view class="product_info">
-                  <view class="product_name">
-                    <text>{{ item.description }}</text>
-                  </view>
-                  <view class="costAndAdd">
-                    <text class="product_cost">￥{{ item.price }}</text>
-                    <text class="product_privil">￥{{ item.privilegePrice }}</text>
-                  </view>
-                </view>
-              </navigator>
-              <!-- <view class="addCart" bindtap="addCost"></view> -->
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <!-- 第二种引入wxml -->
-    <view class="goodscontent">
-      <view class="paper" bindtap='onpaper'>
-        <text>手机</text>
-      </view>
-    </view>
-    <view class="goods-panel">
-      <import src="tpl/goodsList.wxml" />
-      <template is="goodsList" data="{{goodsList:goodsList}}" />
-    </view>
-
-  </scroll-view>
+  <view bindtap="navigateToAboutus" class="tableviewcell">
+    <image src="../../../images/icon_aboutus.png" />
+    <text>设置</text>
+  </view>
 </view>
